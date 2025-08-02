@@ -1,54 +1,66 @@
-# ResearchCrew Crew
+# AI Research Crew
 
-Welcome to the ResearchCrew Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+An automated research system that uses two specialized AI agents to research any topic and generate comprehensive reports. Currently configured to research **Artificial Intelligence in Telecommunications**.
 
-## Installation
+## What This Does
 
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+🔍 **Researcher Agent** (Perplexity AI) → Gathers comprehensive information from the web  
+📊 **Analyst Agent** (OpenAI GPT-4.1) → Creates professional reports with insights and analysis
 
-First, if you haven't already, install uv:
+### Why These Models?
 
+**Perplexity for Research**: Excels at real-time web search and accessing current information with built-in citation capabilities. Perfect for gathering up-to-date facts and data.
+
+**OpenAI for Analysis**: Superior at structured thinking, report writing, and synthesizing complex information into clear, professional documents.
+
+## Quick Setup
+
+### 1. Prerequisites
+- Python 3.10+ installed
+- [Get Perplexity API key](https://docs.perplexity.ai/docs/getting-started) (for research)
+- [Get OpenAI API key](https://platform.openai.com/api-keys) (for analysis)
+
+### 2. Install Dependencies
 ```bash
 pip install uv
-```
-
-Next, navigate to your project directory and install the dependencies:
-
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
 crewai install
 ```
-### Customizing
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
-
-- Modify `src/research_crew/config/agents.yaml` to define your agents
-- Modify `src/research_crew/config/tasks.yaml` to define your tasks
-- Modify `src/research_crew/crew.py` to add your own logic, tools and specific args
-- Modify `src/research_crew/main.py` to add custom inputs for your agents and tasks
-
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
+### 3. Configure API Keys
+Create/edit the `.env` file:
 ```bash
-$ crewai run
+PERPLEXITY_API_KEY=your_perplexity_key_here
+OPENAI_API_KEY=your_openai_key_here
+SERPER_API_KEY=your_serper_key_here  # For web search
 ```
 
-This command initializes the research_crew Crew, assembling the agents and assigning them tasks as defined in your configuration.
+### 4. Run the Research
+```bash
+crewai run
+```
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+## Output
 
-## Understanding Your Crew
+The system generates a detailed research report saved to `output/report.md` covering:
+- Executive summary
+- Key concepts and definitions  
+- Historical development and trends
+- Challenges and opportunities
+- Real-world applications
+- Future outlook
 
-The research_crew Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+## How It Works
 
-## Support
+1. **Research Phase**: Perplexity AI searches and analyzes web sources
+2. **Analysis Phase**: OpenAI processes findings and creates structured report  
+3. **Output**: Professional markdown report in `output/report.md`
 
-For support, questions, or feedback regarding the ResearchCrew Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
+## Optional: Customize Agents (Advanced)
 
-Let's create wonders together with the power and simplicity of crewAI.
+If you want to modify what the agents do, you can edit these files:
+- `src/research_crew/config/agents.yaml` - Change agent roles and goals
+- `src/research_crew/config/tasks.yaml` - Modify what tasks they perform
+
+## Learn More
+
+Built with [CrewAI](https://docs.crewai.com/en/guides/crews/first-crew) - A framework for orchestrating AI agents.
