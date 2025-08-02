@@ -55,6 +55,14 @@ The system generates a detailed research report saved to `output/report.md` cove
 2. **Analysis Phase**: OpenAI processes findings and creates structured report  
 3. **Output**: Professional markdown report in `output/report.md`
 
+## Change Research Topic
+
+To research a different topic:
+1. Open `src/research_crew/main.py`
+2. Look for the line: `'topic': 'Artificial Intelligence in Telecommunications'`
+3. Change it to your topic: `'topic': 'Machine Learning in Healthcare'`
+4. Run `crewai run` again
+
 ## Optional: Customize Agents (Advanced)
 
 If you want to modify what the agents do, you can edit these files:
